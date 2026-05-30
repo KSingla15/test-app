@@ -23,7 +23,7 @@ An interactive command-line quiz game for learning JavaScript and general progra
 
 ```bash
 git clone https://github.com/KSingla15/test-app.git
-cd test-app/test-app
+cd test-app
 ```
 
 This project has no declared npm dependencies, but you can still run:
@@ -43,7 +43,7 @@ npm start
 ### Directly with Node
 
 ```bash
-node index.js
+node test-app/index.js
 ```
 
 ## How to Play
@@ -58,7 +58,7 @@ node index.js
 
 Questions are loaded from:
 
-- `data/questions.json`
+- `test-app/data/questions.json`
 
 ### File format
 
@@ -100,23 +100,24 @@ Example (from the repo):
 ## Project Structure
 
 ```text
-test-app/
-├── index.js                # CLI entrypoint (loads questions, runs main loop)
-├── package.json            # Scripts, Node engine requirement, ESM config
-├── data/
-│   └── questions.json      # Question bank (categories + questions)
-└── src/
-    ├── colors.js           # ANSI color helpers
-    ├── input.js            # readline-based prompt/select/confirm utilities
-    └── quiz.js             # Quiz class (shuffle, askQuestion, results)
+.
+└── test-app/
+    ├── index.js                # CLI entrypoint (loads questions, runs main loop)
+    ├── package.json            # Scripts, Node engine requirement, ESM config
+    ├── data/
+    │   └── questions.json      # Question bank (categories + questions)
+    └── src/
+        ├── colors.js           # ANSI color helpers
+        ├── input.js            # readline-based prompt/select/confirm utilities
+        └── quiz.js             # Quiz class (shuffle, askQuestion, results)
 ```
 
 ## Scripts
 
 From `package.json`:
 
-- `npm start` → `node index.js`
-- `npm test` → `node --test`
+- `npm start` → `node index.js` (run from `./test-app`)
+- `npm test` → `node --test` (run from `./test-app`)
 
 ## Tests
 
@@ -125,7 +126,7 @@ The repo defines a test command (`node --test`), but **no test files were found 
 ## Troubleshooting
 
 ### “SyntaxError: Cannot use import statement outside a module”
-This project is configured as ES Modules (`"type": "module"` in `package.json`). Ensure you are running it via `node index.js` (Node >= 18), and not copying files into a different project with incompatible module settings.
+This project is configured as ES Modules (`"type": "module"` in `package.json`). Ensure you are running it via `node test-app/index.js` (Node >= 18), and not copying files into a different project with incompatible module settings.
 
 ### Colors/symbols look odd in your terminal
 The CLI uses ANSI escape codes for colors (`src/colors.js`) and prints some special characters (e.g., progress bar blocks). If your terminal does not support ANSI colors or Unicode well, output may appear unformatted.
